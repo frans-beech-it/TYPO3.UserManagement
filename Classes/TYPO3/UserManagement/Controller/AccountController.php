@@ -139,10 +139,10 @@ class AccountController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 		$user = new \TYPO3\UserManagement\Domain\Model\User();
 		$name = new \TYPO3\Party\Domain\Model\PersonName('', $firstName, '', $lastName, '', $identifier);
 		$user->setName($name);
-		$electrinocAddress = new \TYPO3\Party\Domain\Model\ElectronicAddress();
-		$electrinocAddress->setIdentifier($email);
-		$electrinocAddress->setType('Email');
-		$user->setPrimaryElectronicAddress($electrinocAddress);
+		$electronicAddress = new \TYPO3\Party\Domain\Model\ElectronicAddress();
+		$electronicAddress->setIdentifier($email);
+		$electronicAddress->setType('Email');
+		$user->setPrimaryElectronicAddress($electronicAddress);
 		$this->partyRepository->add($user);
 
 		$account = $this->accountFactory->createAccountWithPassword($identifier, array_shift($password), array($roles), 'DefaultProvider');
